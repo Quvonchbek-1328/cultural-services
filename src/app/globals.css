@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Cultural Services — Dark Premium Design System
+   Background  deep navy/black gradient (#070B14 → #0F172A → #111827)
+   Primary     Emerald   #10B981
+   Secondary   Teal      #14B8A6
+   Accent      Gold/Amber#F59E0B
+   Glassmorphism cards · soft borders · subtle blur
+   ============================================================ */
+
+@theme {
+  --color-background: #0b1120;
+  --color-foreground: #f9fafb;
+  --color-surface: #111827;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #9ca3af;
+  --color-border: #1f2937;
+  --color-input: rgba(255, 255, 255, 0.14);
+  --color-ring: #10b981;
+
+  /* Brand — primary (emerald). 50–200 = dark translucent tints, 300–400 light, 500+ solid */
+  --color-primary-50: rgba(16, 185, 129, 0.12);
+  --color-primary-100: rgba(16, 185, 129, 0.20);
+  --color-primary-200: rgba(16, 185, 129, 0.32);
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+  --color-primary-foreground: #04130d;
+
+  /* Brand — secondary (teal) */
+  --color-secondary-50: rgba(20, 184, 166, 0.12);
+  --color-secondary-100: rgba(20, 184, 166, 0.20);
+  --color-secondary-200: rgba(20, 184, 166, 0.32);
+  --color-secondary-400: #2dd4bf;
+  --color-secondary-500: #14b8a6;
+  --color-secondary: #14b8a6;
+  --color-secondary-600: #0d9488;
+  --color-secondary-700: #0f766e;
+  --color-secondary-800: #115e59;
+  --color-secondary-foreground: #042f2a;
+
+  /* Brand — accent (gold / amber) */
+  --color-accent-50: rgba(245, 158, 11, 0.12);
+  --color-accent-100: rgba(245, 158, 11, 0.20);
+  --color-accent-200: rgba(245, 158, 11, 0.34);
+  --color-accent-400: #fbbf24;
+  --color-accent: #f59e0b;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #fcd34d;
+  --color-accent-foreground: #2a1a02;
+
+  /* Status (brighter for dark + translucent bgs) */
+  --color-success: #34d399;
+  --color-success-bg: rgba(16, 185, 129, 0.16);
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(245, 158, 11, 0.16);
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.16);
+  --color-info: #60a5fa;
+  --color-info-bg: rgba(59, 130, 246, 0.16);
+
+  --radius: 0.85rem;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-sans), serif;
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.45), 0 16px 40px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 18px 48px -16px rgba(16, 185, 129, 0.35);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(1100px 560px at 50% -8%, rgba(16, 185, 129, 0.10), transparent 60%),
+      radial-gradient(900px 520px at 100% 0%, rgba(20, 184, 166, 0.08), transparent 55%),
+      linear-gradient(180deg, #070b14 0%, #0f172a 55%, #0b1120 100%);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgba(16, 185, 129, 0.35);
+    color: #ecfdf5;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page { padding-inline: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .container-page { padding-inline: 2rem; }
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(120deg, #34d399 0%, #2dd4bf 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-strong {
+    background: rgba(17, 24, 39, 0.72);
+    backdrop-filter: saturate(160%) blur(18px);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  /* Gold star tile motif (hero / CTA) */
+  .motif-stars {
+    background-image:
+      radial-gradient(rgba(251, 191, 36, 0.5) 1.2px, transparent 1.3px),
+      radial-gradient(rgba(251, 191, 36, 0.5) 1.2px, transparent 1.3px);
+    background-position: 0 0, 12px 12px;
+    background-size: 24px 24px;
+    opacity: 0.35;
+  }
+  .motif-grid {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(16, 185, 129, 0.12) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { scrollbar-width: none; }
+
+  .animate-in-up {
+    animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* Card hover lift (emerald glow) */
+.card-hover {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-muted);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
+  animation: shimmer 1.6s infinite;
+}

@@ -1,0 +1,212 @@
+/**
+ * Markaziy ikonka registri.
+ *
+ * Avval `import * as Icons from "lucide-react"` ishlatilardi — bu butun
+ * kutubxonani (1500+ ikonka) bundle'ga tortib, tree-shaking'ni buzar va
+ * kompilyatsiyani sekinlashtirardi. Bu yerda faqat ilovada string nomi
+ * orqali dinamik ishlatiladigan ikonkalarni nomma-nom import qilamiz.
+ *
+ * Yangi kategoriya/nav ikonkasi kerak bo'lsa — pastdagi importga va
+ * `ICONS` xaritasiga qo'shing.
+ */
+import {
+  // Kategoriyalar
+  Mic2,
+  Mic,
+  Users,
+  Camera,
+  Video,
+  Speaker,
+  Flower2,
+  Music,
+  ChefHat,
+  Phone,
+  CheckCircle2,
+  // "Qanday ishlaydi" qadamlari
+  Search,
+  CalendarCheck,
+  Send,
+  PartyPopper,
+  // Rollar
+  User,
+  Briefcase,
+  Building2,
+  ShieldCheck,
+  // Dashboard navigatsiyasi
+  ShoppingBag,
+  Heart,
+  Star,
+  LayoutGrid,
+  Inbox,
+  CalendarDays,
+  Wallet,
+  BarChart3,
+  LayoutDashboard,
+  ClipboardCheck,
+  MessageSquare,
+  // Umumiy / zaxira
+  Sparkles,
+  Circle,
+  // Admin kategoriya tanlovchisi uchun keng to'plam
+  Drum,
+  Guitar,
+  Piano,
+  Headphones,
+  Film,
+  Image,
+  Palette,
+  Brush,
+  Gift,
+  Cake,
+  Utensils,
+  Car,
+  Plane,
+  Crown,
+  Award,
+  Flower,
+  Flame,
+  Gem,
+  Wand2,
+  Theater,
+  Drama,
+  Clapperboard,
+  Disc3,
+  Radio,
+  Megaphone,
+  Volume2,
+  Lightbulb,
+  // Navigatsiya / domen
+  Layers,
+  Package,
+  GitCompare,
+  FolderTree,
+  Tag,
+  type LucideIcon,
+} from "lucide-react";
+
+export const ICONS: Record<string, LucideIcon> = {
+  Mic2,
+  Mic,
+  Users,
+  Camera,
+  Video,
+  Speaker,
+  Flower2,
+  Music,
+  ChefHat,
+  Phone,
+  CheckCircle2,
+  Search,
+  CalendarCheck,
+  Send,
+  PartyPopper,
+  User,
+  Briefcase,
+  Building2,
+  ShieldCheck,
+  ShoppingBag,
+  Heart,
+  Star,
+  LayoutGrid,
+  Inbox,
+  CalendarDays,
+  Wallet,
+  BarChart3,
+  LayoutDashboard,
+  ClipboardCheck,
+  MessageSquare,
+  Sparkles,
+  Circle,
+  Drum,
+  Guitar,
+  Piano,
+  Headphones,
+  Film,
+  Image,
+  Palette,
+  Brush,
+  Gift,
+  Cake,
+  Utensils,
+  Car,
+  Plane,
+  Crown,
+  Award,
+  Flower,
+  Flame,
+  Gem,
+  Wand2,
+  Theater,
+  Drama,
+  Clapperboard,
+  Disc3,
+  Radio,
+  Megaphone,
+  Volume2,
+  Lightbulb,
+  Layers,
+  Package,
+  GitCompare,
+  FolderTree,
+  Tag,
+};
+
+/** Admin kategoriya formasidagi ikonka tanlovchisi uchun nomlar ro'yxati. */
+export const ICON_PICKER_NAMES: string[] = [
+  "Mic2",
+  "Mic",
+  "Music",
+  "Drum",
+  "Guitar",
+  "Piano",
+  "Headphones",
+  "Speaker",
+  "Volume2",
+  "Radio",
+  "Disc3",
+  "Megaphone",
+  "Users",
+  "Camera",
+  "Video",
+  "Film",
+  "Clapperboard",
+  "Image",
+  "Flower2",
+  "Flower",
+  "Palette",
+  "Brush",
+  "Gift",
+  "Cake",
+  "Utensils",
+  "Car",
+  "Plane",
+  "Crown",
+  "Award",
+  "Gem",
+  "Flame",
+  "Wand2",
+  "Theater",
+  "Drama",
+  "Lightbulb",
+  "PartyPopper",
+  "Sparkles",
+  "Star",
+  "Heart",
+];
+
+/**
+ * Nom bo'yicha ikonkani render qiladigan komponent.
+ * Nom topilmasa — zaxira ikonka (`fallback`, standart `Sparkles`) ishlatiladi.
+ */
+export function DynamicIcon({
+  name,
+  className,
+  fallback = "Sparkles",
+}: {
+  name: string;
+  className?: string;
+  fallback?: string;
+}) {
+  const C = ICONS[name] ?? ICONS[fallback] ?? Sparkles;
+  return <C className={className} />;
+}
